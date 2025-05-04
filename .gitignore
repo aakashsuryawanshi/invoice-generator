@@ -40,3 +40,29 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Angular specific files
+node_modules/
+dist/
+/tmp/
+
+# Compiled output
+out-tsc/
+
+# IDE specific files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw? 
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Temporary files
+*.tmp
+*.temp

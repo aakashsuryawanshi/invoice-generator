@@ -1,0 +1,38 @@
+.items {
+    margin: 20px 0;
+}
+
+.btn-delete {
+    color: #dc3545;
+    background: transparent;
+    border: none;
+}
+
+.btn-delete:hover {
+    color: #c82333;
+}
+
+.btn-add {
+    color: #28a745;
+    background: transparent;
+    border: none;
+}
+
+.btn-add:hover {
+    color: #218838;
+}
+
+.item-cell {
+    min-width: 200px;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .item-cell {
+        min-width: 150px;
+    }
+}

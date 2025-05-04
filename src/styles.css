@@ -1,1 +1,190 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Global styles */
+:root {
+    --primary-color: #007e5d;
+    --primary-hover-color: #006b4f;
+    --text-color: #333333;
+    --body-bg: #ffffff;
+    --header-bg: #ffffff;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: sans-serif;
+    color: var(--text-color);
+    background-color: var(--body-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 32px;
+    font-family: sans-serif;
+}
+
+h2 {
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+/* Dark theme styles */
+body.dark-theme {
+    --primary-color: #007e5d;
+    --primary-hover-color: #006b4f;
+    --text-color: #e0e0e0;
+    --body-bg: #121212;
+    --header-bg: #1E2231;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Common classes */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--primary-hover-color);
+    border-color: var(--primary-hover-color);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* Add your existing styles below */
+
+/* Global Styles for Invoice Generator */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --dark-background: #343a40;
+    --light-text: #f8f9fa;
+    --dark-text: #212529;
+    --border-color: #dee2e6;
+}
+
+body.dark-theme {
+    background-color: var(--dark-background);
+    color: var(--light-text);
+}
+
+.dark-theme .bg-white {
+    background-color: #212529 !important;
+}
+
+.dark-theme .text-body {
+    color: #e9ecef !important;
+}
+
+.dark-theme .border-bottom {
+    border-bottom-color: #495057 !important;
+}
+
+.dark-theme .navbar-light {
+    background-color: #212529 !important;
+}
+
+.dark-theme .navbar-light .navbar-brand,
+.dark-theme .navbar-light .nav-link {
+    color: #f8f9fa !important;
+}
+
+.dark-theme .table {
+    color: #e9ecef;
+}
+
+.dark-theme .form-control {
+    background-color: #343a40;
+    border-color: #495057;
+    color: #f8f9fa;
+}
+
+.dark-theme .input-group-text {
+    background-color: #495057;
+    border-color: #495057;
+    color: #f8f9fa;
+}
+
+.dark-theme .text-danger {
+    color: #ff6b6b !important;
+}
+
+/* Form styling */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.input-label {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px dashed #ccc;
+    border-radius: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.input-label:focus {
+    border-bottom-color: var(--primary-color);
+    box-shadow: none;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-add {
+    color: var(--success-color);
+}
+
+.btn-delete {
+    color: var(--danger-color);
+}
+
+/* Print styles */
+@media print {
+    .d-print-none {
+        display: none !important;
+    }
+
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+
+    body {
+        background: white;
+        font-size: 12pt;
+    }
+
+    .invoice-editor {
+        padding: 0;
+        border: none;
+    }
+}

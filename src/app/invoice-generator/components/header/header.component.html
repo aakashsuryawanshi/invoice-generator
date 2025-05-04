@@ -1,0 +1,138 @@
+<header id="header" class="navbar navbar-expand-lg navbar-shadow navbar-light bg-white">
+  <div class="container">
+    <div class="row w-100">
+      <!-- Left side with logo and navigation -->
+      <div class="col-8 d-flex align-items-center">
+        <!-- Logo -->
+        <a href="/" class="navbar-brand me-0">
+          <img src="assets/logo.svg" height="27" alt="Invoice Generator" *ngIf="!isDarkMode">
+          <img src="assets/logo-dark.svg" height="27" alt="Invoice Generator"  *ngIf="isDarkMode">
+        </a>
+
+        <!-- Main navigation - desktop -->
+        <ul class="navbar-nav d-none d-lg-flex ms-4">
+          <li class="nav-item px-lg-2">
+            <a href="#" class="nav-link">
+              Help
+            </a>
+          </li>
+          <li class="nav-item px-lg-2">
+            <a href="#" class="nav-link">
+              History
+            </a>
+          </li>
+          <li class="nav-item px-lg-2">
+            <a href="#" class="nav-link">
+              Invoicing Guide
+            </a>
+          </li>
+          <li class="nav-item px-lg-2 position-relative">
+            <a routerLink="/genie-invoice" class="nav-link">
+              Genie Invoice
+              <app-feature-flag text="NEW" type="beta" position="inline"></app-feature-flag>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right side elements -->
+      <div class="col-4 d-flex justify-content-end align-items-center">
+        <div class="d-none d-lg-flex align-items-center">
+          <!-- Language button -->
+          <button class="btn btn-link nav-link px-3" type="button" (click)="toggleLanguageDialog()" aria-label="Change language">
+            <i class="fas fa-language fa-md"></i> 
+          </button>
+          
+          <!-- Theme toggle -->
+          <button class="btn btn-link nav-link px-3" type="button" (click)="toggleTheme(); $event.preventDefault()" aria-label="Toggle theme">
+            <i class="fas fa-sun fa-md" *ngIf="!isDarkMode"></i> 
+            <i class="fas fa-moon fa-md" *ngIf="isDarkMode"></i>
+          </button>
+          <!-- Sign in and Sign up buttons -->
+          <a href="#" class="nav-item px-3 nav-link">
+            Sign In
+          </a>
+          <a href="#" class="btn btn-primary navbar-btn btn-sm px-3 ms-2">
+            Sign Up
+          </a>
+        </div>
+
+        <!-- Mobile menu toggle button -->
+        <button class="navbar-toggler ms-auto d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Mobile menu items -->
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav d-block d-lg-none">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Help
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              History
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Invoicing Guide
+            </a>
+          </li>
+          <li class="nav-item position-relative">
+            <a routerLink="/genie-invoice" class="nav-link">
+              Genie Invoice
+              <app-feature-flag text="NEW" type="beta" position="inline"></app-feature-flag>
+            </a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-link nav-link" type="button" (click)="toggleLanguageDialog()">
+              <i class="fas fa-language fa-md"></i> 
+            </button>
+          </li>
+          <li class="nav-item">
+            <!-- Theme toggle -->
+            <button class="btn btn-link nav-link me-3" type="button" (click)="toggleTheme(); $event.preventDefault()" aria-label="Toggle theme">
+              <i class="fas fa-sun fa-md" *ngIf="!isDarkMode"></i> 
+              <i class="fas fa-moon fa-md" *ngIf="isDarkMode"></i>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="btn btn-outline-primary btn-sm d-block mx-3 my-2">
+              Sign In
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="btn btn-primary btn-sm d-block mx-3 my-2">
+              Sign Up
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Language Selection Dialog -->
+  <div class="language-dialog" *ngIf="showLanguageDialog">
+    <div class="language-dialog-content">
+      <div class="language-dialog-header">
+        <h5>Change Language</h5>
+        <button type="button" class="language-close-btn" (click)="closeLanguageDialog($event)">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="language-dialog-body">
+        <div class="language-grid">
+          <div class="language-item" *ngFor="let language of languages" 
+               [class.active]="language === selectedLanguage"
+               (click)="selectLanguage(language)">
+            {{ language }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

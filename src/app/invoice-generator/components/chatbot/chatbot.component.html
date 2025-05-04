@@ -1,0 +1,83 @@
+<div class="chatbot-container">
+  <!-- Chat Toggle Button with New Feature Badge -->
+  <button 
+    class="chat-toggle-btn" 
+    [class.open]="isChatbotOpen"
+    (click)="toggleChatbot()" 
+    aria-label="Toggle Chatbot">
+    <i class="fas" [class.fa-comment]="!isChatbotOpen" [class.fa-times]="isChatbotOpen"></i>
+    <app-feature-flag *ngIf="!isChatbotOpen" text="NEW" type="new" position="top-right"></app-feature-flag>
+  </button>
+
+  <!-- Chat Window -->
+  <div class="chat-window" [class.open]="isChatbotOpen">
+    <!-- Chat Header -->
+    <div class="chat-header">
+      <div class="chat-header-title">
+        <i class="fas fa-robot"></i>
+        <h3>Invoice Assistant <app-feature-flag text="BETA" type="beta" position="inline"></app-feature-flag></h3>
+      </div>
+      <div class="chat-header-status">
+        <span class="status-indicator"></span>
+        <span>Online</span>
+      </div>
+    </div>
+
+    <!-- Feature Banner -->
+    <div class="feature-banner" *ngIf="showFeatureBanner">
+      <div class="feature-banner-content">
+        <i class="fas fa-star feature-icon"></i>
+        <p>Try our new AI-powered invoice assistant! Ask questions or get help with your invoices.</p>
+        <button class="dismiss-button" (click)="dismissFeatureBanner()" aria-label="Dismiss">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Messages Area -->
+    <div class="chat-messages" #chatMessages>
+      <div *ngFor="let message of messages" 
+          class="message" 
+          [class.user-message]="message.sender === 'user'"
+          [class.bot-message]="message.sender === 'bot'">
+        <div class="message-avatar" *ngIf="message.sender === 'bot'">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="message-content">
+          <div class="message-text">{{ message.content }}</div>
+          <div class="message-time">
+            {{ message.timestamp | date:'shortTime' }}
+          </div>
+        </div>
+        <div class="message-avatar user" *ngIf="message.sender === 'user'">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input Area -->
+    <div class="chat-input">
+      <div class="input-container">
+        <input 
+          type="text" 
+          [formControl]="messageInput" 
+          placeholder="Ask about invoices..." 
+          (keydown)="handleKeyPress($event)"
+          aria-label="Chat message input">
+        <button 
+          class="send-button" 
+          (click)="sendMessage()" 
+          [disabled]="!messageInput.value?.trim()"
+          aria-label="Send message">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+      <div class="chat-footer">
+        <span class="powered-by">Powered by AI</span>
+        <button class="feedback-button" (click)="provideFeedback()">
+          <i class="fas fa-thumbs-up"></i> Feedback
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

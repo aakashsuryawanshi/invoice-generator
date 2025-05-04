@@ -1,0 +1,65 @@
+<div class="items table-responsive">
+  <table class="table table-sm table-striped">
+    <thead class="table-light">
+      <tr>
+        <th style="width: 34px;" class="d-print-none"></th>
+        <th>
+          <input type="text" class="form-control form-control-sm input-label" tabindex="30" placeholder="Item">
+        </th>
+        <th class="text-end" style="width: 80px;">
+          <input type="text" class="form-control form-control-sm input-label" tabindex="31" placeholder="Quantity">
+        </th>
+        <th class="text-end" style="width: 120px;">
+          <input type="text" class="form-control form-control-sm input-label" tabindex="32" placeholder="Rate">
+        </th>
+        <th class="text-end" style="width: 120px;">
+          <input type="text" class="form-control form-control-sm input-label" tabindex="33" placeholder="Amount">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of lineItems; let i = index">
+        <td class="d-print-none">
+          <button type="button" class="btn btn-sm btn-delete me-1" title="Delete row" tabindex="-1" (click)="deleteLineItem(i)">
+            <span class="fas fa-times"></span>
+          </button>
+        </td>
+        <td class="item-cell">
+          <input type="text" class="form-control form-control-sm" tabindex="{{1001 + (i * 10)}}" 
+                 placeholder="Description of service or product..." 
+                 [(ngModel)]="item.description">
+        </td>
+        <td class="text-end">
+          <input type="number" class="form-control form-control-sm text-end" tabindex="{{1002 + (i * 10)}}"
+                 [(ngModel)]="item.quantity" 
+                 (change)="calculateLineItemAmount(item)">
+        </td>
+        <td class="text-end">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text">{{currency}}</span>
+            <input type="number" min="0" step="0.01" class="form-control text-end" tabindex="{{1003 + (i * 10)}}"
+                   [(ngModel)]="item.rate" 
+                   (change)="calculateLineItemAmount(item)">
+          </div>
+        </td>
+        <td class="text-end">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text">{{currency}}</span>
+            <input type="number" min="0" step="0.01" class="form-control text-end" tabindex="-1" 
+                   [(ngModel)]="item.amount" disabled>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot class="d-print-none">
+      <tr>
+        <td colspan="5">
+          <button type="button" class="btn btn-sm btn-add" tabindex="1013" (click)="addLineItem()">
+            <span class="fas fa-plus me-1"></span>
+            Add Line
+          </button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
